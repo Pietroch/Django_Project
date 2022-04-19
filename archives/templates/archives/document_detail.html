@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{document.title}}</h2>
+    <h3>Où trouver ce document ?</h3>
+    <p class="serie">{{ document.fond.serie.cote }} : {{ document.fond.serie.title }}</p>
+    <p class="fond">{{ document.fond.cote }} : {{ document.fond.title }}</p>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Db</h2>
+    <div class="grid-container">
+        {% for db in db %}
+            <div class="post">
+                <p>{{ db.caption }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{character.first_name}} {{character.last_name}}</h2>
+
+{% if experiences %}
+
+<h3>Experiences</h3>
+
+{% for experience in experiences %}
+    
+<p>{{ experience.position }} chez {{ experience.company }}</p>
+    
+{% endfor %}
+
+{% else %}
+
+{% endif %}
+
+{% if travels %}
+
+<h3>Voyages</h3>
+
+{% for travel in travels %}
+    
+<p><a href="{% url 'travel-detail' travel.id %}">{{travel.title}}</a></p>
+    
+{% endfor %}
+
+{% else %}
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Enregistrer une archives ?</h2>
+    <form method="post" enctype="multipart/form-data">
+        {{ country_form.as_p }}
+        {{ depot_form.as_p }}
+        {% csrf_token %}
+        <button type="submit" >Publier</button>
+    </form>
+{% endblock content %}

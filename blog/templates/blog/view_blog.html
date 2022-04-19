@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p><h2>{{ blog.title }}</h2> de <a href="{% url 'character-detail' user.id %}">{{ blog.author.first_name }} {{ blog.author.last_name }}</a></p>
+    <img src="{{ blog.photo.image.url }}">
+    <p>{{ blog.photo.caption }}</p>
+    <p>{{ blog.content }}</p>
+{% endblock content %}

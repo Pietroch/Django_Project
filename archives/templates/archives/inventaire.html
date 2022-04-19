@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Inventaire</h2>
+
+{% for country in countrys %}
+
+<p class="country">{{ country.name }} : {{ country.abreviation }}</p>
+
+{% for depot in depots %}
+
+<p class="depot">{{ depot.cote }} : {{ depot.title }}</p>
+
+{% for serie in series %}
+
+<p class="serie">{{ serie.cote }} : {{ serie.title }}</p>
+
+{% for fond in fonds %}
+
+<p class="fond">{{ fond.cote }} : {{ fond.title }}</p>
+
+{% for document in documents %}
+
+<p class="document"><a href="{% url 'document-detail' document.id %}">{{document.title}}</a></p>
+
+{% endfor %}
+
+{% endfor %}
+
+{% endfor %}
+
+{% endfor %}
+
+{% endfor %}
+
+{% endblock content %}

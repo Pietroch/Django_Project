@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h2>Personnages</h2>
+
+{% for character in characters %}
+
+<p><a href="{% url 'character-detail' character.id %}">{{ character.first_name }} {{ character.last_name }}</a></p> 
+
+{% endfor %}
+
+{% endblock %}

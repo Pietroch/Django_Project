@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h2>Voyages</h2>
+
+<table>
+
+{% for travel in travels %}
+
+<tr>
+
+<td><a href="{% url 'travel-detail' travel.id %}">{{travel.title}}</a></td>
+
+<td>{{travel.date_start}}</td>
+
+<td>{{travel.date_end}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

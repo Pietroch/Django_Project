@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{travel.title}}</h2>
+
+{% if activities %}
+
+<h3>Activités :</h3>
+
+{% for activity in activities %}
+
+{% for adresse in adresses %}
+   
+<table>
+
+<tr>
+
+    <td>{{activity.category}}</td>
+    <td>{{adresse.libelle}} - {{adresse.street}} {{adresse.numero}} {{adresse.code}} {{adresse.city}}</td>
+    <td>{{activity.date_start}}</td>
+    <td>{{activity.date_end}}</td>
+
+</tr>
+
+</table>
+
+{% endfor %}
+
+{% endfor %}
+
+{% else %}
+
+{% endif %}
+
+{% if travellers %}
+
+<h3>Voyageurs :</h3>
+
+{% for traveller in travellers %}
+    
+<p><a href="{% url 'character-detail' traveller.id %}">{{ traveller.first_name }} {{ traveller.last_name }}</a></p> 
+    
+{% endfor %}
+
+{% else %}
+
+{% endif %}
+
+{% endblock %}
