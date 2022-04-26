@@ -8,7 +8,17 @@
 
 {% for character in characters %}
 
-<p><a href="{% url 'character-detail' character.id %}">{{ character.first_name }} {{ character.last_name }}</a></p> 
+<p><a href="{% url 'character-detail' character.id %}">{{ character.first_name }} {{ character.last_name }}</a>
+{% if character.date_birth and character.date_death %} ({{character.date_birth|date:'Y'}}-{{character.date_death|date:'Y'}})
+
+{% elif character.date_birth and not character.date_death %} ({{character.date_birth|date:'Y'}})
+
+{% elif not character.date_birth and character.date_death %} (-{{character.date_death|date:'Y'}})
+
+{% else %}
+
+{% endif %}
+</p> 
 
 {% endfor %}
 

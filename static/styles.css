@@ -72,4 +72,21 @@ p.document {
 
 table, th, td {
     border: 1px solid;
-  }
+}
+
+.div-block-2 {
+    position: fixed;
+    left : auto;
+    top: 15%;
+    right: 8%;
+    bottom: 0%;
+    max-height: 350px;
+    max-width: 30%;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.heading-2 {
+    max-width: 150px;
+    font-size: 20px;
+}

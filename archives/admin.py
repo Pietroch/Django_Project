@@ -10,7 +10,7 @@ class CountryAdmin(admin.ModelAdmin):
 admin.site.register(Country, CountryAdmin)
 
 class DepotAdmin(admin.ModelAdmin):
-    list_display = ('title', 'cote', 'country')
+    list_display = ('title', 'cote')
 
 admin.site.register(Depot, DepotAdmin)
 

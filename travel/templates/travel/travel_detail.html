@@ -8,26 +8,22 @@
 
 <h3>Activités :</h3>
 
-{% for activity in activities %}
-
-{% for adresse in adresses %}
-   
 <table>
+    
+{% for activity in activities %}
 
 <tr>
 
     <td>{{activity.category}}</td>
-    <td>{{adresse.libelle}} - {{adresse.street}} {{adresse.numero}} {{adresse.code}} {{adresse.city}}</td>
+    <td>{{activity.adresse.libelle}} - {{activity.adresse.street}} {{activity.adresse.numero}} {{activity.adresse.code}} {{activity.adresse.city}}</td>
     <td>{{activity.date_start}}</td>
     <td>{{activity.date_end}}</td>
 
 </tr>
 
+{% endfor %}
+
 </table>
-
-{% endfor %}
-
-{% endfor %}
 
 {% else %}
 

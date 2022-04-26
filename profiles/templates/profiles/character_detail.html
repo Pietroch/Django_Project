@@ -4,6 +4,22 @@
 
 <h2>{{character.first_name}} {{character.last_name}}</h2>
 
+{% if character.date_birth %}
+
+<p>{% if character.gender == 'Male' %}Né{% else %}Née{% endif %} le {{character.date_birth}}.</p>
+
+{% else %}
+
+{% endif %}
+
+{% if character.date_death %}
+
+<p>{% if character.gender == 'Male' %}Décédé{% else %}Décédée{% endif %} le {{character.date_death}}.</p>
+
+{% else %}
+
+{% endif %}
+
 {% if experiences %}
 
 <h3>Experiences</h3>

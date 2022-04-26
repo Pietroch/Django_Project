@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'dbmanagement',
     'profiles',
     'archives',
-    'travel'
+    'travel',
+    'health'
 ]
 
 MIDDLEWARE = [

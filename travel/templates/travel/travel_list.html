@@ -18,6 +18,14 @@
 
 <td>{{travel.date_end}}</td>
 
+<td>
+{% for traveller in travellers %}
+{{traveller.last_name}}
+
+{% endfor %}
+
+</td>
+
 </tr>
 
 {% endfor %}
