@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
+from django.db.models import Q
 
 from .models import Country, Depot, Serie, Fond, Document
 
@@ -7,18 +8,18 @@ from archives import forms
 
 @login_required
 def inventaire(request):
-    countrys = Country.objects.all()
-    depots = Depot.objects.all()
-    series = Serie.objects.all()
-    fonds = Fond.objects.all()
     documents = Document.objects.all()
+    fonds = Serie.objects.filter(id__in=documents)
+    series = Serie.objects.filter(id__in=fonds)
+    depots = Depot.objects.filter(id__in=series)
+    countrys = Country.objects.filter(id__in=depots)
     template = 'archives/inventaire.html'
     context = {
         'countrys': countrys,
         'depots': depots,
         'series': series,
         'fonds': fonds,
-        'documents' : documents}
+        'documents': documents}
     return render(request, template, context)
 
 @login_required

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<div class="document-detail">
     <h2>{{document.title}}</h2>
     
     <h3>Transcription</h3>
@@ -10,8 +12,8 @@
     
     <h3>Utilisation</h3>
     <p>{{ document.event.traveller }} : {{ document.event.title }} - {{ document.event.date_start }}</p>
-
-    <div class="div-block-2">
+</div>
+    <div class="document-localisation">
     <h3 class="heading-2">Où trouver ce document ?</h3>
     <p class="serie">{{ document.fond.serie.cote }} : {{ document.fond.serie.title }}</p>
     <p class="fond">{{ document.fond.cote }} : {{ document.fond.title }}</p>

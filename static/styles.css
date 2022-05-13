@@ -1,92 +1,175 @@
 html {
-    font-family: "Trebuchet MS", helvetica, sans-serif;
-}
-
-/* The sidebar menu */
-.sidebar {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 220px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #1d3030;
-    color:  #ffffe6;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-/* The navigation menu links */
-.sidebar a {
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.15;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+  
+  a {
+    border-bottom: 1px solid #000;
+    color: inherit;
     text-decoration: none;
-    color:  #ffffe6;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+  
+  #header {
+    line-height: 0;
+    text-align: center;
+  }
+  
+  .header-navigation1 {
+    margin: 12px auto;
+  }
+  
+  .header-navigation2 {
+    padding: 0 30px;
+    text-align: right;
+  }
+  
+  .header-navigation2 a {
+    border-bottom: none;
+    line-height: 25px;
+  }
+  
+  .header-navigation2 > ul {
     display: block;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
-    color: #f1f1f1;
-}
-
-/* Style page content */
-.main {
-    margin-left: 240px; /* Same as the width of the sidebar */
-    padding: 20px;
-}
-
-.avatar {
-    max-width: 5em;
-    border-radius: 10%;
+  }
+  
+  .header-navigation2 > ul > li {
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 1.43;
+    margin-left: 0;
+    padding: 4px 10px;
+    position: relative;
+    text-transform: uppercase;
+  }
+  
+  .site-title {
+    display: inline-block;
+    line-height: 0;
+    margin: 19px auto 0;
+  }
+  
+  .site-title p {
+    font-family: "Cedarville Cursive", Helvetica Neue, Helvetica, Arial,
+      sans-serif;
+    font-size: 26px;
+    letter-spacing: 1.2px;
+    line-height: 1.19;
+    margin: 0;
+    padding: 26px 0 20px;
+    text-align: center;
+  }
+  
+  .site-title a {
+    border-bottom: none;
+  }
+  
+  .site-title .title-line {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    margin: 3px auto;
+    max-width: 75%;
+    width: 370px;
     display: block;
-    margin: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.grid-container {
+    margin-top: 23px;
+    width: 220px;
+  }
+  
+  #site-navigation-menu > .nav-menu {
+    display: inline-block;
+  }
+  
+  #site-navigation-menu > .nav-menu li {
+    display: inline-block;
+    letter-spacing: 0.05em;
+    line-height: 31px;
+    margin: 0 0.938em;
+    position: relative;
+    text-transform: uppercase;
+  }
+  
+  #site-navigation-menu > .nav-menu li a {
+    border-bottom: none;
+    display: inline-block;
+    padding: 31px 0;
+  }
+  
+  .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 20px;
     text-align: center;
-}
-
-.post img {
+  }
+  
+  .post img {
     max-width: 20em;
     border-radius: 5px;
-}
-
-p.serie {
-    text-decoration: underline;;
-}
-
-p.fond {
-    text-indent: 1.5em;
+  }
+  
+  p.country {
+    font-variant-caps: small-caps;
     font-weight: bold;
-} 
-
-p.document {
+    color: #0008b0;
+  }
+  
+  p.depot {
+    text-indent: 1.5em;
+  }
+  
+  p.serie {
+    text-decoration: underline;
     text-indent: 3em;
-} 
-
-table, th, td {
+  }
+  
+  p.fond {
+    text-indent: 4.5em;
+    font-weight: bold;
+  }
+  
+  p.document {
+    text-indent: 6em;
+  }
+  
+  table,
+  th,
+  td {
     border: 1px solid;
-}
-
-.div-block-2 {
+  }
+  
+  .document-localisation {
     position: fixed;
-    left : auto;
-    top: 15%;
-    right: 8%;
-    bottom: 0%;
-    max-height: 350px;
-    max-width: 30%;
-    border: 1px solid #000;
-    border-radius: 10px;
-}
-
-.heading-2 {
+    left: 0px;
+    top: 140px;
+    height: 797px;
+    width: 480px;
+    z-index: 82;
+  }
+  
+  .document-detail {
+    position: fixed;
+    left: 500px;
+    top: 140px;
+    height: 797px;
+    width: 1440px;
+    overflow: hidden scroll;
+    z-index: 81;
+  }
+  
+  .heading-2 {
     max-width: 150px;
     font-size: 20px;
-}
+  }
+  

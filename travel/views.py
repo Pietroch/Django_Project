@@ -12,8 +12,9 @@ from profiles.models import Character
 
 @login_required
 def travel_list(request):
-    travels = Trip.objects.all()
-    travellers = Character.objects.all()
+    travels = Trip.objects.prefetch_related('traveller').all()
+    for travel in travels:
+        travellers = travel.traveller.all()
     template = 'travel/travel_list.html'
     context = {
         'travels' : travels,
