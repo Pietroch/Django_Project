@@ -39,6 +39,7 @@ urlpatterns = [
     path('characters/', profiles_views.character_list, name='character-list'),
     path('characters/<int:character_id>/', profiles_views.character_detail, name='character-detail'),
     path('inventaire/', archives.views.inventaire, name='inventaire'),
+    path('press/', archives.views.newspaper_list, name='press'),
     path('archive_registration/', archives.views.archive_registration, name='archive_registration'),
     path('documents/<int:document_id>/', archives.views.document_detail, name='document-detail'),
     path('travels/', travel.views.travel_list, name='travel-list'),

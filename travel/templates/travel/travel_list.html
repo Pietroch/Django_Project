@@ -8,26 +8,44 @@
 
 <table>
 
-{% for travel in travels %}
-
+<thead>
 <tr>
 
-<td><a href="{% url 'travel-detail' travel.id %}">{{travel.title}}</a></td>
+<th>
+     
+   <div class="text">Titre</div>
 
-<td>{{travel.date_start}}</td>
+</th>
+<th>
+ 
+   
+   <div class="text">Date de début</div>
 
-<td>{{travel.date_end}}</td>
+</th>
+  <th>
+ 
+   
+   <div class="text">Date de fin</div>
 
-<td>
+</th>
+<th>    
+   
+   <div class="text">Voyageurs</div>
+
+</th>
+</tr>
+</thead>
+<tbody>
+    {% for travel in travels %}
+    
+<tr><th class="field-newspaper nowrap"><a href="{% url 'travel-detail' travel.id %}">{{travel.title}}</a></th><td class="field-number">{{travel.date_start}}</td><td class="field-date nowrap">{{travel.date_end}}</td><td class="field-date nowrap">
 {% for traveller in travellers %}
 
 {{traveller.last_name}},
 
 {% endfor %}
 
-</td>
-
-</tr>
+</td></tr>
 
 {% endfor %}
 

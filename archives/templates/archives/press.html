@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Presse</h2>
+
+{% for newspaper in newspapers %}
+
+<p>{{ newspaper.title }}<p>
+
+{% for issue in issues %}
+
+{{ issue.date }} ({{ issue.number }}) |
+
+{% endfor %}
+
+{% endfor %}
+
+{% endblock content %}

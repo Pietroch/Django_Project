@@ -15,17 +15,11 @@
                 <div class="header-navigation2">
                     <ul>
                       <li>Bienvenue, <b>{{ user.first_name }}</b>
-                      {% if user.profile_photo %}
-                      <img class="avatar" src={{ user.profile_photo.url }}>
-                      {% else %}
-                    <img class="avatar" src="{% static 'images/default_profile.png'%}">
-                {% endif %}
-                      </li>
-                      <li><a href="{% url 'upload_profile_photo' %}">Changer la photo de profil</a></li>
+                      
                         <li><a href="{% url 'password_change' %}">Changer le mot de passe</a></li>
 
                         <li>
-                            <a href="/admin/">Administration</a>
+                            <a href="/admin/" target="_blank">Administration</a>
                         </li>
 
                         <li>
@@ -48,13 +42,12 @@
 
             <div id="site-navigation-menu">
                 <ul class="nav-menu">
-                    <li><a href="{% url 'blog_create' %}">Écrire un billet</a></li>
-                    <li><a href="{% url 'photo_upload' %}">Téléverser une photo</a></li>
                     <li><a href="{% url 'db_upload' %}">Data</a></li>
                     <li><a href="{% url 'character-list' %}">Personnages</a></li>
                     <li><a href="{% url 'inventaire' %}">Inventaire</a></li>
                     <li><a href="{% url 'archive_registration' %}">Archives</a></li>
                     <li><a href="{% url 'travel-list' %}">Voyages</a></li>
+                    <li><a href="{% url 'press' %}">Presse</a></li>
                 </ul>
             </div>
 

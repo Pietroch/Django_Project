@@ -18,10 +18,6 @@ html {
     text-decoration: none;
   }
   
-  p {
-    font-size: 1rem;
-  }
-  
   #header {
     line-height: 0;
     text-align: center;
@@ -106,6 +102,10 @@ html {
     display: inline-block;
     padding: 31px 0;
   }
+
+  .main {
+    margin-left: 500px;
+  }
   
   .grid-container {
     display: grid;
@@ -143,16 +143,14 @@ html {
     text-indent: 6em;
   }
   
-  table,
-  th,
-  td {
-    border: 1px solid;
+  .document-title {
+
   }
-  
+
   .document-localisation {
     position: fixed;
-    left: 0px;
-    top: 140px;
+    left: 100px;
+    top: 330px;
     height: 797px;
     width: 480px;
     z-index: 82;
@@ -161,9 +159,9 @@ html {
   .document-detail {
     position: fixed;
     left: 500px;
-    top: 140px;
-    height: 797px;
-    width: 1440px;
+    top: 360px;
+    height: 50%;
+    width: 70%;
     overflow: hidden scroll;
     z-index: 81;
   }
@@ -173,3 +171,55 @@ html {
     font-size: 20px;
   }
   
+
+  /* TABLES */
+ table {
+  border-collapse: collapse;
+  border-color: #ccc;
+  font-size: 14px;
+}
+td {
+  line-height: 16px;
+  border-bottom: 1px solid #e8e8e8;
+  vertical-align: top;
+  padding: 8px;
+}
+th {
+  font-weight: 600;
+  text-align: left;
+  line-height: 16px;
+  border-bottom: 1px solid #e8e8e8;
+  vertical-align: top;
+  padding: 8px;
+}
+thead th, td {
+  color: #666;
+  background: #fff;
+  border: none;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+}
+thead th {
+  padding: 5px 10px;
+  line-height: normal;
+  text-transform: uppercase;
+  background: #f8f8f8;
+}
+thead th a:link, thead th a:visited {
+  color: #666;
+}
+thead th.sorted .text {
+  padding-right: 42px;
+}
+table thead th .text span {
+  padding: 8px 10px;
+  display: block;
+}
+table thead th .text a {
+  display: block;
+  cursor: pointer;
+  padding: 8px 10px;
+}
+table thead th .text a:focus, table thead th .text a:hover {
+  background: #e4e4e4;
+}

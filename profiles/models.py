@@ -20,6 +20,12 @@ class Character(models.Model):
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
+class Event(models.Model):
+    kind = models.fields.CharField(max_length=100)
+    date = models.DateField(default=date.today, null=True, blank=True)
+    def __str__(self):
+        return f'{self.kind}'
+
 class Company(models.Model):
     name = models.fields.CharField(max_length=100)
     location = models.fields.CharField(max_length=100)

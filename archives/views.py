@@ -1,8 +1,9 @@
+from urllib import request
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.db.models import Q
 
-from .models import Country, Depot, Serie, Fond, Document
+from .models import Country, Depot, Newspaper, Serie, Fond, Document, Issue
 
 from archives import forms
 
@@ -28,7 +29,20 @@ def document_detail(request, document_id):
     fonds = Fond.objects.all()
     series = Serie.objects.all()
     template = 'archives/document_detail.html'
-    context = {'document' : document, 'fonds': fonds, 'series': series}
+    context = {
+        'document' : document,
+        'fonds': fonds,
+        'series': series}
+    return render(request, template, context)
+
+@login_required
+def newspaper_list(request):
+    newspapers = Newspaper.objects.all().order_by("title")
+    issues = Issue.objects.filter(id__in=newspapers).order_by("date")
+    template = 'archives/press.html'
+    context = {
+        'newspapers': newspapers,
+        'issues': issues}
     return render(request, template, context)
 
 @login_required
