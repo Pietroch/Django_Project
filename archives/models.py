@@ -14,28 +14,35 @@ class Country(models.Model):
 class Depot(models.Model):
     title = models.fields.CharField(max_length=100)
     cote = models.fields.CharField(max_length=100)
-    country = models.ForeignKey(Country, null=True, blank=True, on_delete=models.SET_NULL)
+    country = models.ForeignKey(Country, null=True, on_delete=models.SET_NULL)
     def __str__(self):
         return f'{self.title}'
 
 class Serie(models.Model):
     title = models.fields.CharField(max_length=100)
     cote = models.fields.CharField(max_length=100)
-    depot = models.ForeignKey(Depot, null=True, blank=True, on_delete=models.SET_NULL)
+    depot = models.ForeignKey(Depot, null=True, on_delete=models.SET_NULL)
+    date = models.IntegerField(null=True, blank=True)
+    date_start = models.IntegerField(null=True, blank=True)
+    date_end = models.IntegerField(null=True, blank=True)
     def __str__(self):
         return f'{self.cote} : {self.title}'
 
 class Fond(models.Model):
     title = models.fields.CharField(max_length=100)
     cote = models.fields.CharField(max_length=100)
-    serie = models.ForeignKey(Serie, null=True, blank=True, on_delete=models.SET_NULL)
+    serie = models.ForeignKey(Serie, null=True, on_delete=models.SET_NULL)
+    date = models.IntegerField(null=True, blank=True)
+    date_start = models.IntegerField(null=True, blank=True)
+    date_end = models.IntegerField(null=True, blank=True)
     def __str__(self):
         return f'{self.cote} : {self.title}'
 
 class Document(models.Model):
     title = models.fields.CharField(max_length=100)
-    fond = models.ForeignKey(Fond, null=True, blank=True, on_delete=models.SET_NULL)
-    date = models.DateField(default=date.today)
+    fond = models.ForeignKey(Fond, null=True, on_delete=models.SET_NULL)
+    depot = models.ForeignKey(Depot, null=True, on_delete=models.SET_NULL)
+    date = models.DateField(null=True, blank=True)
     language = models.fields.CharField(max_length=100, null=True, blank=True)
     transcription = models.fields.CharField(max_length=5000, null=True, blank=True)
     note = models.fields.CharField(max_length=5000, null=True, blank=True)

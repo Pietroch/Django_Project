@@ -4,25 +4,25 @@
 
 <h2>Inventaire</h2>
 
-{% for country in countrys %}
+{% for country in countrys|dictsort:"abreviation" %}
 
 <p class="country">{{ country.name }} : {{ country.abreviation }}</p>
 
-{% for depot in depots %}
+{% for depot in country.depot_set.all|dictsort:"cote" %}
 
 <p class="depot">{{ depot.cote }} : {{ depot.title }}</p>
 
-{% for serie in series %}
+{% for serie in depot.serie_set.all|dictsort:"cote" %}
 
-<p class="serie">{{ serie.cote }} : {{ serie.title }}</p>
+<p class="serie">{{ serie.cote }} : {{ serie.title }}{% if serie.date %} ({{serie.date}}){% else %}{% if serie.date_start and serie.date_end%} ({{serie.date_start}}-{{serie.date_end}}){% else %}{% endif %}{% endif %}</p>
 
-{% for fond in fonds %}
+{% for fond in serie.fond_set.all|dictsort:"cote" %}
 
-<p class="fond">{{ fond.cote }} : {{ fond.title }}</p>
+<p class="fond">{{ fond.cote }} : {{ fond.title }}{% if fond.date %} ({{fond.date}}){% else %}{% if fond.date_start and fond.date_end%} ({{fond.date_start}}-{{fond.date_end}}){% else %}{% endif %}{% endif %}</p>
 
-{% for document in documents %}
+{% for document in fond.document_set.all %}
 
-<p class="document"><a href="{% url 'document-detail' document.id %}">{{document.title}}</a></p>
+<p class="document"><a href="{% url 'document-detail' document.id %}">{{document.title}} {% if document.date %}({{document.date}}){% else %}{% endif %}</a></p>
 
 {% endfor %}
 

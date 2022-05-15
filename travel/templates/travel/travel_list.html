@@ -1,54 +1,44 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block content %}
-
 <h2>Voyages</h2>
-
 <table>
-
-<thead>
-<tr>
-
-<th>
-     
-   <div class="text">Titre</div>
-
-</th>
-<th>
- 
-   
-   <div class="text">Date de début</div>
-
-</th>
-  <th>
- 
-   
-   <div class="text">Date de fin</div>
-
-</th>
-<th>    
-   
-   <div class="text">Voyageurs</div>
-
-</th>
-</tr>
-</thead>
-<tbody>
-    {% for travel in travels %}
-    
-<tr><th class="field-newspaper nowrap"><a href="{% url 'travel-detail' travel.id %}">{{travel.title}}</a></th><td class="field-number">{{travel.date_start}}</td><td class="field-date nowrap">{{travel.date_end}}</td><td class="field-date nowrap">
-{% for traveller in travellers %}
-
-{{traveller.last_name}},
-
-{% endfor %}
-
-</td></tr>
-
-{% endfor %}
-
+   <thead>
+      <tr>
+         <th>
+            <div class="text">Titre</div>
+         </th>
+         <th>
+            <div class="text">Date de début</div>
+         </th>
+         <th>
+            <div class="text">Date de fin</div>
+         </th>
+         <th>
+            <div class="text">Voyageurs</div>
+         </th>
+         <th>
+            <div class="text">Villes</div>
+         </th>
+      </tr>
+   </thead>
+   <tbody>
+      {% for travel in travels %}
+      <tr>
+         <th class="field-newspaper nowrap"><a href="{% url 'travel-detail' travel.id %}">{{travel.title}}</a></th>
+         <td class="field-number">{{travel.date_start}}</td>
+         <td class="field-date nowrap">{{travel.date_end}}</td>
+         <td>
+            {% for traveller in travel.traveller.all|dictsort:"last_name"|dictsort:"first_name" %}
+            {{traveller.first_name}} {{traveller.last_name}}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+         </td>
+         <td>
+            {% for activity in travel.activity_set.all %}
+            {{activity.adresse.city}}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+         </td>
+      </tr>
+      {% endfor %}
 </table>
-
 {% endblock %}

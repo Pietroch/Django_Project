@@ -4,11 +4,11 @@
 
 <h2>Presse</h2>
 
-{% for newspaper in newspapers %}
+{% for newspaper in newspapers|dictsort:"title" %}
 
 <p>{{ newspaper.title }}<p>
 
-{% for issue in issues %}
+{% for issue in newspaper.issue_set.all|dictsort:"date" %}
 
 {{ issue.date }} ({{ issue.number }}) |
 

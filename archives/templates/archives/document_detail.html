@@ -12,11 +12,20 @@
     <p>{{ document.note }}</p>
     
     <h3>Utilisation</h3>
-    <p>{{ document.event.traveller }} : {{ document.event.title }} - {{ document.event.date_start }}</p>
+    <p>
+        {% for traveller in document.event.traveller.all|dictsort:"last_name"|dictsort:"first_name" %}
+            {{traveller.first_name}} {{traveller.last_name}}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+         : {{ document.event.title }} - {{ document.event.date_start }}</p>
 </div>
+
+
+
     <div class="document-localisation">
     <h3 class="heading-2">Où trouver ce document ?</h3>
     <p class="serie">{{ document.fond.serie.cote }} : {{ document.fond.serie.title }}</p>
     <p class="fond">{{ document.fond.cote }} : {{ document.fond.title }}</p>
     </div>
-{% endblock %}
+
+
+    {% endblock %}

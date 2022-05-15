@@ -1,3 +1,5 @@
+@import url('https://themes.googleusercontent.com/fonts/css?kit=dpiI8CyVsrzWsJLBFKehGpLhv3qFjX7dUn1mYxfCXhI');
+
 html {
     -webkit-text-size-adjust: 100%;
     line-height: 1.15;
@@ -5,15 +7,13 @@ html {
   
   body {
     margin: 0;
-    font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-family: "Roboto", Arial, sans-serif;
     font-weight: 300;
     letter-spacing: 1px;
     line-height: 1.5;
   }
   
   a {
-    border-bottom: 1px solid #000;
     color: inherit;
     text-decoration: none;
   }
@@ -28,6 +28,7 @@ html {
   }
   
   .header-navigation2 {
+    font-size: 10px;
     padding: 0 30px;
     text-align: right;
   }
@@ -43,7 +44,6 @@ html {
   
   .header-navigation2 > ul > li {
     display: inline-block;
-    font-size: 14px;
     letter-spacing: 0.3px;
     line-height: 1.43;
     margin-left: 0;
@@ -55,7 +55,7 @@ html {
   .site-title {
     display: inline-block;
     line-height: 0;
-    margin: 19px auto 0;
+    margin: 0px auto 0;
   }
   
   .site-title p {
@@ -65,7 +65,7 @@ html {
     letter-spacing: 1.2px;
     line-height: 1.19;
     margin: 0;
-    padding: 26px 0 20px;
+    padding: 10px 0 10px;
     text-align: center;
   }
   
@@ -104,7 +104,8 @@ html {
   }
 
   .main {
-    margin-left: 500px;
+    margin-left: 20%;
+    margin-right: 20%;
   }
   
   .grid-container {
@@ -120,31 +121,92 @@ html {
   }
   
   p.country {
-    font-variant-caps: small-caps;
-    font-weight: bold;
-    color: #0008b0;
-  }
+    padding-top:5pt;
+    padding-bottom:5pt;
+    line-height:1.15;
+    orphans:2;
+    widows:2;
+    text-align:left;
+    color:#0008b0;
+    font-weight:700;
+    text-decoration:none;
+    vertical-align:baseline;
+    font-size:10.5pt;
+    font-family:"Roboto";
+    font-style:normal;
+}
   
   p.depot {
-    text-indent: 1.5em;
+    padding-top:5pt;
+    text-indent:17pt;
+    padding-bottom:5pt;
+    line-height:1.15;
+    orphans:2;
+    widows:2;
+    text-align:left;
+    color:#000000;
+    font-weight:400;
+    text-decoration:none;
+    vertical-align:baseline;
+    font-size:10.5pt;
+    font-family:"Roboto";
+    font-style:normal;
   }
   
   p.serie {
-    text-decoration: underline;
-    text-indent: 3em;
+    padding-top:5pt;
+    text-indent:33pt;
+    padding-bottom:5pt;
+    line-height:1.15;
+    orphans:2;
+    widows:2;
+    text-align:left;
+    -webkit-text-decoration-skip:none;
+    color:#000000;
+    text-decoration:underline;
+    text-underline-offset: 2px;
+    vertical-align:baseline;
+    text-decoration-skip-ink:none;
+    font-style:normal;
+    font-size:10.5pt;
+    font-family:"Roboto";
+    font-weight:400;
   }
   
   p.fond {
-    text-indent: 4.5em;
-    font-weight: bold;
+    padding-top:5pt;
+    text-indent:50pt;
+    padding-bottom:5pt;
+    line-height:1.15;
+    orphans:2;
+    widows:2;
+    text-align:left;
+    color:#000000;
+    font-weight:700;
+    text-decoration:none;
+    vertical-align:baseline;
+    font-size:10.5pt;
+    font-family:"Roboto";
+    font-style:normal
   }
   
   p.document {
-    text-indent: 6em;
+    padding-top:5pt;
+    text-indent:66pt;
+    padding-bottom:5pt;
+    line-height:1.15;
+    orphans:2;
+    widows:2;
+    text-align:left;
+    font-size:10.5pt;
+    font-family:"Roboto";
+    color:#1155cc;
+    font-weight:400
   }
-  
-  .document-title {
 
+  p.document.a {
+    color:inherit;
+    text-decoration:inherit
   }
 
   .document-localisation {
@@ -176,14 +238,15 @@ html {
  table {
   border-collapse: collapse;
   border-color: #ccc;
-  font-size: 14px;
 }
+
 td {
   line-height: 16px;
   border-bottom: 1px solid #e8e8e8;
   vertical-align: top;
   padding: 8px;
 }
+
 th {
   font-weight: 600;
   text-align: left;

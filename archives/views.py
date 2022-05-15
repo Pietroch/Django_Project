@@ -1,7 +1,6 @@
 from urllib import request
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
-from django.db.models import Q
 
 from .models import Country, Depot, Newspaper, Serie, Fond, Document, Issue
 
@@ -9,18 +8,10 @@ from archives import forms
 
 @login_required
 def inventaire(request):
-    documents = Document.objects.all()
-    fonds = Serie.objects.filter(id__in=documents)
-    series = Serie.objects.filter(id__in=fonds)
-    depots = Depot.objects.filter(id__in=series)
-    countrys = Country.objects.filter(id__in=depots)
+    countrys = Country.objects.all
     template = 'archives/inventaire.html'
     context = {
-        'countrys': countrys,
-        'depots': depots,
-        'series': series,
-        'fonds': fonds,
-        'documents': documents}
+        'countrys': countrys,}
     return render(request, template, context)
 
 @login_required
@@ -37,12 +28,11 @@ def document_detail(request, document_id):
 
 @login_required
 def newspaper_list(request):
-    newspapers = Newspaper.objects.all().order_by("title")
-    issues = Issue.objects.filter(id__in=newspapers).order_by("date")
+    newspapers = Newspaper.objects.all()
     template = 'archives/press.html'
     context = {
-        'newspapers': newspapers,
-        'issues': issues}
+        'newspapers': newspapers
+        }
     return render(request, template, context)
 
 @login_required
