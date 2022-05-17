@@ -41,7 +41,6 @@ class Fond(models.Model):
 class Document(models.Model):
     title = models.fields.CharField(max_length=100)
     fond = models.ForeignKey(Fond, null=True, on_delete=models.SET_NULL)
-    depot = models.ForeignKey(Depot, null=True, on_delete=models.SET_NULL)
     date = models.DateField(null=True, blank=True)
     language = models.fields.CharField(max_length=100, null=True, blank=True)
     transcription = models.fields.CharField(max_length=5000, null=True, blank=True)

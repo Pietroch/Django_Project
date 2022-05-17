@@ -37,19 +37,13 @@ def newspaper_list(request):
 
 @login_required
 def archive_registration(request):
-    depot_form = forms.DepotForm()
-    country_form = forms.CountryForm()
+    document_form = forms.DocumentForm()
     if request.method == 'POST':
-        depot_form = forms.DepotForm(request.POST)
-        country_form = forms.CountryForm(request.POST)
-        if all([depot_form.is_valid(), country_form.is_valid()]):
-            country = country_form.save(commit=False)
-            country.save()
-            depot = depot_form.save(commit=False)
-            depot.country = country
-            depot.save()
+        document_form = forms.DocumentForm(request.POST)
+        if all([document_form.is_valid()]):
+            document = document_form.save(commit=False)
+            document.save()
     context = {
-        'depot_form': depot_form,
-        'country_form': country_form,
+        'document_form': document_form,
     }
     return render(request, 'archives/archive_registration.html', context=context)

@@ -5,14 +5,20 @@ from profiles.models import Character
 # Create your models here.
 
 class Adresse(models.Model):
-    libelle = models.fields.CharField(max_length=100)
     numero = models.fields.IntegerField(null=True, blank=True)
     street = models.fields.CharField(max_length=100)
     code = models.fields.IntegerField(null=True)
     city = models.fields.CharField(max_length=100, null=True)
     country = models.fields.CharField(max_length=100, null=True)
     def __str__(self):
-        return f'{self.libelle}'
+        return f'{self.numero} {self.street}, {self.code} {self.city}'
+
+class Place(models.Model):
+    name = models.fields.CharField(max_length=100)
+    adresse = models.ManyToManyField(Adresse)
+    description = models.fields.CharField(max_length=100, null=True, blank=True)
+    def __str__(self):
+        return f'{self.name}'
 
 class Trip(models.Model):
     title = models.fields.CharField(max_length=100)
@@ -36,7 +42,7 @@ class Activity(models.Model):
     )
     category = models.CharField(max_length=30, choices=ROLE_CHOICES)
     trip = models.ForeignKey(Trip, null=True, on_delete=models.SET_NULL)
-    adresse = models.ForeignKey(Adresse, null=True, blank=True, on_delete=models.SET_NULL)
+    place = models.ForeignKey(Place, null=True, blank=True, on_delete=models.SET_NULL)
     date_start = models.DateField(default=date.today)
     date_end = models.DateField(default=date.today)
     class Meta:

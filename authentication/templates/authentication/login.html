@@ -1,10 +1,25 @@
-{% extends 'base.html' %}
+{% load static %}
+<html>
+
+    <head>
+        <title>Project</title>
+        <link rel="stylesheet" href="{% static 'login.css' %}">
+    </head>
+    
+    <body>
+
 {% block content %}
-    <h2>Connexion</h2>
+
+<div class="login">
+    <h1>Connexion</h1>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <button type="submit" >Se connecter</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Se connecter</button>
     </form>
-    <p>Pas encore membre ? <a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a></p>
-{% endblock content %}
+    <p><a href="{% url 'signup' %}">S'inscrire</a></p>
+</div>
+{% endblock %}
+
+</body>
+</html>
