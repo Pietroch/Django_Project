@@ -37,13 +37,36 @@ def newspaper_list(request):
 
 @login_required
 def archive_registration(request):
-    document_form = forms.DocumentForm()
+    depot_form = forms.DepotForm()
     if request.method == 'POST':
-        document_form = forms.DocumentForm(request.POST)
-        if all([document_form.is_valid()]):
-            document = document_form.save(commit=False)
-            document.save()
+        depot_form = forms.DepotForm(request.POST)
+        if all([depot_form.is_valid()]):
+            depot = depot_form.save(commit=False)
+            depot.save()
     context = {
-        'document_form': document_form,
+        'depot_form': depot_form,
     }
     return render(request, 'archives/archive_registration.html', context=context)
+
+
+
+
+from dal import autocomplete
+
+from archives.models import Country
+
+
+class CountryAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        # Don't forget to filter out results depending on the visitor !
+        if not self.request.user.is_authenticated:
+            return Country.objects.none()
+
+        qs = Country.objects.all()
+
+        if self.q:
+            qs = qs.filter(name__istartswith=self.q)
+
+        return qs
+
+

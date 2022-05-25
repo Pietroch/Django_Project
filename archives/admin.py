@@ -4,12 +4,15 @@ from django.contrib import admin
 
 from archives.models import Country, Depot, Serie, Fond, Document, Newspaper, Issue
 
+from archives.forms import DepotForm
+
 class CountryAdmin(admin.ModelAdmin):
     list_display = ('name', 'abreviation')
 
 admin.site.register(Country, CountryAdmin)
 
 class DepotAdmin(admin.ModelAdmin):
+    form = DepotForm
     list_display = ('title', 'cote', 'country')
 
 admin.site.register(Depot, DepotAdmin)

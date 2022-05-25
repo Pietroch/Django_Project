@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{place.name}}</h2>
+
+<p>{{place.adresse}}</p>
+
+<p>{{place.category}}</p>
+
+<p>{{place.description}}</p>
+
+<p>{{place.url}}</p>
+
+{% now "Y-m-d" as todays_date %}
+
+{% for activity in activities %}{% if todays_date > activity.date_start|date:"Y-m-d" %}
+
+<h3>Déjà visité par</h3>
+
+{% for activity in activities %}
+
+{% if todays_date > activity.date_start|date:"Y-m-d" %}
+<p>{% for visitor in activity.visitor.all %}{{visitor.first_name}}{% if not forloop.last %}, {% endif %}{% endfor %} le {{activity.date_start}}</p>
+{% endif %}
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+
+{% for activity in activities %}{% if todays_date < activity.date_start|date:"Y-m-d" %}
+
+<h3>Visites prévues</h3>
+
+{% for activity in activities %}
+
+{% if todays_date < activity.date_start|date:"Y-m-d" %}
+<p>{% for visitor in activity.visitor.all %}{{visitor.first_name}}{% if not forloop.last %}, {% endif %}{% endfor %} le {{activity.date_start}}</p>
+{% endif %}
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+
+
+{% endblock %}

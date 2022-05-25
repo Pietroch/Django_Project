@@ -35,7 +35,7 @@
          </td>
          <td>
             {% for activity in travel.activity_set.all %}
-            {{activity.adresse.city}}{% if not forloop.last %}, {% endif %}
+            {{activity.place.adresse.city}}{% if not forloop.last %}, {% endif %}
             {% endfor %}
          </td>
       </tr>

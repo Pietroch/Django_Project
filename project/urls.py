@@ -1,3 +1,7 @@
+from dal import autocomplete
+
+from django.urls import re_path as url
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -11,6 +15,7 @@ import dbmanagement.views
 from profiles import views as profiles_views
 import archives.views
 import travel.views
+from archives.views import CountryAutocomplete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,6 +49,12 @@ urlpatterns = [
     path('documents/<int:document_id>/', archives.views.document_detail, name='document-detail'),
     path('travels/', travel.views.travel_list, name='travel-list'),
     path('travel/<int:travel_id>/', travel.views.travel_detail, name='travel-detail'),
+    path('place/<int:place_id>/', travel.views.place_detail, name='place-detail'),
+    url(
+        r'^country-autocomplete/$',
+        CountryAutocomplete.as_view(),
+        name='country-autocomplete',
+    ),
 ]
 
 if settings.DEBUG:

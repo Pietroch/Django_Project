@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import get_object_or_404, redirect, render
 
-from travel.models import Trip, Adresse, Activity
+from travel.models import Trip, Adresse, Activity, Place
 
 from profiles.models import Character
 
@@ -29,5 +29,16 @@ def travel_detail(request, travel_id):
         'travel': travel,
         'activities' : activities,
         'travellers' : travellers,
+        }
+    return render(request, template, context)
+
+@login_required
+def place_detail(request, place_id):
+    place = get_object_or_404(Place, id=place_id)
+    activities = Activity.objects.filter(place=place_id)
+    template = 'travel/place_detail.html'
+    context = {
+        'place': place,
+        'activities': activities,
         }
     return render(request, template, context)

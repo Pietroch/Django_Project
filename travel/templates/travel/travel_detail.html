@@ -2,46 +2,63 @@
 
 {% block content %}
 
-<h2>{{travel.title}}</h2>
+<table class="travel">
 
-{% if activities %}
-
-<h3>Activités :</h3>
-
-<table>
+    <tr class="title">
+        <td colspan="6" rowspan="1">
+            <p class="title_travel">{{travel.title}}</p>
+        </td>
+    </tr>
     
-{% for activity in activities %}
+    <tr>
+        <td class="subtitles" colspan="1" rowspan="1">
+           <p class="subtitles">Activit&eacute;</span></p>
+        </td>
+        <td class="subtitles" colspan="1" rowspan="1">
+           <p class="subtitles">Lieu</span></p>
+        </td>
+        <td class="subtitles" colspan="1" rowspan="1">
+           <p class="subtitles">Horaire</span></p>
+        </td>
+        <td class="subtitles" colspan="1" rowspan="1">
+           <p class="subtitles">Adresse</span></p>
+        </td>
+        <td class="subtitles" colspan="1" rowspan="1">
+           <p class="subtitles">Voyageur</span></p>
+        </td>
+        <td class="subtitles" colspan="1" rowspan="1">
+           <p class="subtitles">Note</span></p>
+        </td>
+     </tr>
 
-<tr>
+     {% regroup activities by date_start as activity_list %}
 
-    <td>{{activity.category}}</td>
-    <td>{{activity.place.name}}</td>
-    <td>{{activity.adresse.street}} {{activity.adresse.numero}}, {{activity.adresse.code}} {{activity.adresse.city}}</td>
-    <td>{{activity.date_start}}</td>
-    <td>{{activity.date_end}}</td>
+     {% for date_start in activity_list %}
 
-</tr>
-
+     <tr class="activity_date">
+        <td class="activity_date" colspan="6" rowspan="1">
+            <p class="activity_date">{{date_start.grouper}}
+            </span></p>
+         </td>
+     </tr>
+     {% for activity in date_start.list|dictsort:"date_start"|dictsort:"time_start" %}
+     <tr class="activity">
+        <td class="activity_category" colspan="1" rowspan="1">
+           <p class="activity_category">{{activity.category}}</span></p>
+        </td>
+        <td class="activity_place" colspan="1" rowspan="1"><p class="activity_place"><a href="{% url 'place-detail' activity.place.id %}">{{activity.place.name}}</a></p></td>
+        <td class="activity_time" colspan="1" rowspan="1"><p class="activity_time">{{activity.time_start}}</p></td>
+        <td class="activity_adresse" colspan="1" rowspan="1"><p class="activity_adresse">{{activity.place.adresse.street}}{% if activity.place.adresse.numero %} {{activity.place.adresse.numero}}{% else %}{% endif %}, {{activity.place.adresse.code}} {{activity.place.adresse.city}}</p></td>
+        <td class="activity_traveller" colspan="1" rowspan="1"><p class="activity_traveller">{% for traveller in travellers %}<a href="{% url 'character-detail' traveller.id %}">{{ traveller.first_name }} {{ traveller.last_name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p></td>
+        <td class="activity_note" colspan="1" rowspan="1"><p class="activity_note">{{activity.note}}</p></td>
+        </tr>
+        {% endfor %}
 {% endfor %}
 
 </table>
 
-{% else %}
 
-{% endif %}
 
-{% if travellers %}
 
-<h3>Voyageurs :</h3>
-
-{% for traveller in travellers %}
-    
-<p><a href="{% url 'character-detail' traveller.id %}">{{ traveller.first_name }} {{ traveller.last_name }}</a></p> 
-    
-{% endfor %}
-
-{% else %}
-
-{% endif %}
 
 {% endblock %}
