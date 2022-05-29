@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from archives.models import Country
 
 # Create your models here.
 
@@ -40,3 +41,14 @@ class Experience(models.Model):
     position = models.fields.CharField(max_length=100)
     def __str__(self):
         return f'{self.position} chez {self.company}'
+
+class Title(models.Model):
+    identifiant = models.fields.CharField(max_length=100)
+    masculin = models.fields.CharField(max_length=100)
+    feminin = models.fields.CharField(max_length=100)
+
+class Position(models.Model):
+    title = models.ForeignKey(Title, null=True, blank=True, on_delete=models.SET_NULL)
+    character = models.ForeignKey(Character, null=True, blank=True, on_delete=models.SET_NULL)
+    country = models.ForeignKey(Country, null=True, blank=True, on_delete=models.SET_NULL)
+    country

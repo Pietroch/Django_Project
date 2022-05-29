@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'profiles',
     'archives',
     'travel',
-    'health'
 ]
 
 MIDDLEWARE = [
@@ -89,10 +88,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'books': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'metadata.db',
-    }
 }
 
 
