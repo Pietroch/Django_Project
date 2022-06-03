@@ -48,6 +48,7 @@ urlpatterns = [
     path('archive_registration/', archives.views.archive_registration, name='archive_registration'),
     path('documents/<int:document_id>/', archives.views.document_detail, name='document-detail'),
     path('travels/', travel.views.travel_list, name='travel-list'),
+    path('places/', travel.views.place_list, name='place-list'),
     path('travel/<int:travel_id>/', travel.views.travel_detail, name='travel-detail'),
     path('place/<int:place_id>/', travel.views.place_detail, name='place-detail'),
     url(

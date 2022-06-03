@@ -1,17 +1,23 @@
 from django.db import models
 from datetime import date
 from profiles.models import Character
+from archives.models import Country
 
 # Create your models here.
+
+class City(models.Model):
+    name = models.fields.CharField(max_length=100)
+    code = models.fields.IntegerField(null=True)
+    country = models.ForeignKey(Country, null=True, on_delete=models.SET_NULL)
+    def __str__(self):
+        return f'{self.name}'
 
 class Adresse(models.Model):
     numero = models.fields.IntegerField(null=True, blank=True)
     street = models.fields.CharField(max_length=100, null=True, blank=True)
-    code = models.fields.IntegerField(null=True)
-    city = models.fields.CharField(max_length=100, null=True)
-    country = models.fields.CharField(max_length=100, null=True)
+    city = models.ForeignKey(City, null=True, on_delete=models.SET_NULL)
     def __str__(self):
-        return f'{self.numero} {self.street}, {self.code} {self.city}'
+        return f'{self.numero} {self.street}, {self.city.code} {self.city.name}, {self.city.country}'
 
 class PlaceCategory(models.Model):
     name = models.fields.CharField(max_length=100)
@@ -58,5 +64,7 @@ class Activity(models.Model):
     date_end = models.DateField(default=date.today)
     time_end = models.TimeField(auto_now=False, auto_now_add=False, null=True, blank=True)
     visitor = models.ManyToManyField(Character)
+    price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    paid = models.BooleanField(null=True)
     class Meta:
         verbose_name_plural = "Activities"

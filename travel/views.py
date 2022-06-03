@@ -6,9 +6,11 @@ from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import get_object_or_404, redirect, render
 
-from travel.models import Trip, Adresse, Activity, Place
+from travel.models import Trip, Activity, Place
 
-from profiles.models import Character
+from profiles.models import Character, Transmission
+
+from .models import Country
 
 @login_required
 def travel_list(request):
@@ -33,12 +35,24 @@ def travel_detail(request, travel_id):
     return render(request, template, context)
 
 @login_required
+def place_list(request):
+    countrys = Country.objects.all
+    template = 'travel/place_list.html'
+    context = {
+        'countrys': countrys,
+        }
+    return render(request, template, context)
+
+
+@login_required
 def place_detail(request, place_id):
     place = get_object_or_404(Place, id=place_id)
     activities = Activity.objects.filter(place=place_id)
+    transmissions = Transmission.objects.filter(place=place_id)
     template = 'travel/place_detail.html'
     context = {
         'place': place,
         'activities': activities,
+        'transmissions': transmissions,
         }
     return render(request, template, context)

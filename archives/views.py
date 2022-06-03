@@ -11,7 +11,8 @@ def inventaire(request):
     countrys = Country.objects.all
     template = 'archives/inventaire.html'
     context = {
-        'countrys': countrys,}
+        'countrys': countrys,
+        }
     return render(request, template, context)
 
 @login_required
@@ -23,7 +24,8 @@ def document_detail(request, document_id):
     context = {
         'document' : document,
         'fonds': fonds,
-        'series': series}
+        'series': series,
+        }
     return render(request, template, context)
 
 @login_required

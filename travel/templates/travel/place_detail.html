@@ -21,7 +21,7 @@
 {% for activity in activities %}
 
 {% if todays_date > activity.date_start|date:"Y-m-d" %}
-<p>{% for visitor in activity.visitor.all %}{{visitor.first_name}}{% if not forloop.last %}, {% endif %}{% endfor %} le {{activity.date_start}}</p>
+<p>{% for visitor in activity.visitor.all %}<a href="{% url 'character-detail' visitor.id %}">{{visitor.first_name}} {{visitor.last_name}}</a>{% if not forloop.last %}, {% endif %}{% endfor %} le {{activity.date_start}}</p>
 {% endif %}
 {% endfor %}
 
@@ -35,12 +35,23 @@
 {% for activity in activities %}
 
 {% if todays_date < activity.date_start|date:"Y-m-d" %}
-<p>{% for visitor in activity.visitor.all %}{{visitor.first_name}}{% if not forloop.last %}, {% endif %}{% endfor %} le {{activity.date_start}}</p>
+<p>{% for visitor in activity.visitor.all %}<a href="{% url 'character-detail' visitor.id %}">{{visitor.first_name}} {{visitor.last_name}}</a>{% if not forloop.last %}, {% endif %}{% endfor %} le {{activity.date_start}}</p>
 {% endif %}
 {% endfor %}
 
 {% endif %}
 {% endfor %}
 
+
+
+{% for transmission in transmissions %}
+
+{{transmission.date}}
+
+{% for vendeur in transmission.vendeur.all %}{{vendeur.first_name}} {{vendeur.last_name}}{% endfor %}
+-> 
+{% for acheteur in transmission.acheteur.all %}{{acheteur.first_name}} {{acheteur.last_name}}{% endfor %}
+
+{% endfor %}
 
 {% endblock %}

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'profiles',
     'archives',
     'travel',
+    'content',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +88,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'heredis': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'Autres.heredis',
     },
 }
 

@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import get_object_or_404, redirect, render
 
-from profiles.models import Experience, Character, Company
+from profiles.models import Experience, Character, Company, Fonction
 
 from travel.models import Trip
 
@@ -18,9 +18,12 @@ def character_detail(request, character_id):
     character = get_object_or_404(Character, id=character_id)
     experiences = Experience.objects.filter(character_id=character_id)
     travels = Trip.objects.filter(traveller=character_id)
+    fonctions = Fonction.objects.filter(character_id=character_id)
     template = 'profiles/character_detail.html'
     context = {
         'character': character,
         'experiences' : experiences,
-        'travels' : travels}
+        'travels' : travels,
+        'fonctions' : fonctions,
+        }
     return render(request, template, context)

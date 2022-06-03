@@ -1,6 +1,5 @@
 from django.db import models
 from datetime import date
-from travel.models import Trip
 from profiles.models import Character
 
 class Country(models.Model):
@@ -45,7 +44,6 @@ class Document(models.Model):
     language = models.fields.CharField(max_length=100, null=True, blank=True)
     transcription = models.fields.CharField(max_length=5000, null=True, blank=True)
     note = models.fields.CharField(max_length=5000, null=True, blank=True)
-    event = models.ForeignKey(Trip, null=True, blank=True, on_delete=models.SET_NULL)
     def __str__(self):
         return f'{self.title}'
 

@@ -4,6 +4,16 @@
 
 <h2>{{character.first_name}} {{character.last_name}}</h2>
 
+{% if fonctions %}
+
+{% for fonction in fonctions %}
+
+<p><i>{% if character.gender == 'Male' %}{{fonction.title.masculin}}{% else %}{{fonction.title.feminin}}{% endif %}{% if fonction.domaine.gender == 'pluriel' %} des {% elif fonction.domaine.gender == 'féminin' %} de la {% elif fonction.domaine.gender == 'masculin' %} du {% elif fonction.domaine.gender == 'voyelle' %} d'{% else %} de {% endif %}{{fonction.domaine.name}}{% if fonction.name %} ({{fonction.name}}){% else %}{% endif %}</i></p>
+
+{% endfor %}
+
+{% endif %}
+
 {% if character.date_birth %}
 
 <p>{% if character.gender == 'Male' %}Né{% else %}Née{% endif %} le {{character.date_birth}}.</p>
