@@ -489,6 +489,38 @@ p.activity_adresse{
   font-style:normal;
 }
 
+td.activity_price{
+  border-right-style:solid;
+  padding:5pt 5pt 5pt 5pt;
+  border-bottom-color:#ffffff;
+  border-top-width:0pt;
+  border-right-width:0pt;
+  border-left-color:#ffffff;
+  vertical-align:top;
+  border-right-color:#ffffff;
+  border-left-width:0pt;
+  border-top-style:solid;
+  border-left-style:solid;
+  border-bottom-width:0pt;
+  width:50pt;
+  border-top-color:#ffffff;
+  border-bottom-style:solid;
+}
+
+p.activity_price{
+  padding-top:0pt;
+  padding-bottom:0pt;
+  line-height:1.0;
+  text-align:right;
+  color:#000000;
+  font-weight:400;
+  text-decoration:none;
+  vertical-align:baseline;
+  font-size:10.5pt;
+  font-family:"Roboto";
+  font-style:normal;
+}
+
 td.activity_traveller{
   border-right-style:solid;
   padding:5pt 5pt 5pt 5pt;

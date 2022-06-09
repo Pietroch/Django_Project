@@ -5,7 +5,7 @@
 <table class="travel">
 
     <tr class="title">
-        <td colspan="6" rowspan="1">
+        <td colspan="7" rowspan="1">
             <p class="title_travel">{{travel.title}}</p>
         </td>
     </tr>
@@ -24,6 +24,9 @@
            <p class="subtitles">Adresse</span></p>
         </td>
         <td class="subtitles" colspan="1" rowspan="1">
+         <p class="subtitles">Coût</span></p>
+      </td>
+        <td class="subtitles" colspan="1" rowspan="1">
            <p class="subtitles">Voyageur</span></p>
         </td>
         <td class="subtitles" colspan="1" rowspan="1">
@@ -36,7 +39,7 @@
      {% for date_start in activity_list %}
 
      <tr class="activity_date">
-        <td class="activity_date" colspan="6" rowspan="1">
+        <td class="activity_date" colspan="7" rowspan="1">
             <p class="activity_date">{{date_start.grouper}}
             </span></p>
          </td>
@@ -49,6 +52,7 @@
         <td class="activity_place" colspan="1" rowspan="1"><p class="activity_place"><a href="{% url 'place-detail' activity.place.id %}">{{activity.place.name}}</a></p></td>
         <td class="activity_time" colspan="1" rowspan="1"><p class="activity_time">{{activity.time_start}}</p></td>
         <td class="activity_adresse" colspan="1" rowspan="1"><p class="activity_adresse">{% if activity.place.adresse.street %} {{activity.place.adresse.street}}{% else %}{% endif %}{% if activity.place.adresse.numero %} {{activity.place.adresse.numero}}{% else %}{% endif %}, {{activity.place.adresse.code}} {{activity.place.adresse.city}}</p></td>
+        <td class="activity_price" colspan="1" rowspan="1"><p class="activity_price">{% if activity.price %}{{activity.price}} €{% endif %}</p></td>
         <td class="activity_traveller" colspan="1" rowspan="1"><p class="activity_traveller">{% for traveller in travellers %}<a href="{% url 'character-detail' traveller.id %}">{{ traveller.first_name }} {{ traveller.last_name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p></td>
         <td class="activity_note" colspan="1" rowspan="1"><p class="activity_note">{{activity.note}}</p></td>
         </tr>
@@ -57,8 +61,62 @@
 
 </table>
 
+<p></p>
+
+<table>
+   <tr>
+      <td colspan="2" rowspan="1">
+         Budget
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Transport
+      </td>
+      <td>
+
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Hébergement
+      </td>
+      <td>
+         
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Restauration
+      </td>
+      <td>
+         
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Loisir
+      </td>
+      <td>
+         
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Total
+      </td>
+      <td>
+         
+      </td>
+   </tr>
+</table>
 
 
 
+{% for price in prices %}
+
+   {{prices}}
+
+{% endfor %}
 
 {% endblock %}

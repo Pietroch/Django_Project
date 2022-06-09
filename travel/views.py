@@ -12,6 +12,8 @@ from profiles.models import Character, Transmission
 
 from .models import Country
 
+from django.db.models import Sum
+
 @login_required
 def travel_list(request):
     travels = Trip.objects.prefetch_related('traveller').all()
@@ -26,11 +28,13 @@ def travel_detail(request, travel_id):
     travel = get_object_or_404(Trip, id=travel_id)
     activities = Activity.objects.filter(trip_id=travel_id)
     travellers = travel.traveller.all().order_by("last_name", "first_name")
+    prices = Activity.objects.aggregate(Sum('price'))
     template = 'travel/travel_detail.html'
     context = {
         'travel': travel,
         'activities' : activities,
         'travellers' : travellers,
+        'prices' : prices,
         }
     return render(request, template, context)
 
